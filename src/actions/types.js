@@ -11,3 +11,4 @@ export const CONFIRM_PASSWORD_CHANGED = 'confirm_password_changed';
 export const REGISTER_USER = 'register_user';
 export const REGISTER_USER_SUCCESS = 'register_user_success';
 export const REGISTER_USER_FAILED = 'register_user_failed';
+export const LOGOUT_USER = 'logout_user';

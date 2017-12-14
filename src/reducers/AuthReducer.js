@@ -10,7 +10,8 @@ import {
     LOGIN_USER,
     REGISTER_USER_SUCCESS,
     REGISTER_USER_FAILED,
-    REGISTER_USER
+    REGISTER_USER,
+    LOGOUT_USER
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -23,12 +24,11 @@ const INITIAL_STATE = {
     user: null,
     error: '',
     loading: false,
-    success: '',
-    isAuthenticated: false
+    success: ''
 };
   
   export default (state = INITIAL_STATE, action) => {
-    // console.log(state);
+    console.log(state);
     switch (action.type) {
         case USERNAME_CHANGED:
             return { ...state, username: action.payload };
@@ -45,7 +45,7 @@ const INITIAL_STATE = {
         case LOGIN_USER:
             return { ...state, loading: true, error: '' };
         case LOGIN_USER_SUCCESS:
-            return { ...state, ...INITIAL_STATE, user: action.payload, isAuthenticated: true };
+            return { ...state, ...INITIAL_STATE, user: action.payload };
         case LOGIN_USER_FAIL:
             return { ...state, error: 'Authentication Failed.', password: '', loading: false };
         case REGISTER_USER:
@@ -59,6 +59,8 @@ const INITIAL_STATE = {
             };
         case REGISTER_USER_FAILED:
             return { ...state, error: 'L\'inscription a échoué', loading: false };
+        case LOGOUT_USER:
+            return { ...state, ...INITIAL_STATE }
       default:
             return state;
     }

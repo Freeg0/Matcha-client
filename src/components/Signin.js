@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import '../app.css';
 import { Input, Button } from 'semantic-ui-react';
 import {
-    emailChanged,
+    usernameChanged,
     passwordChanged,
     loginUser
 } from '../actions';
 
-class Signup extends Component {
+class Signin extends Component {
     constructor(props) {
         super(props);
     }
 
-    onEmailChange(e) {
-        this.props.emailChanged(e.target.value);
+    onUsernameChange(e) {
+        this.props.usernameChanged(e.target.value);
     }
 
     onPasswordChange(e) {
@@ -22,9 +22,9 @@ class Signup extends Component {
     }
 
     handleSubmit() {
-        const { email, password } = this.props
+        const { username, password } = this.props
 
-        this.props.loginUser({ email, password }, this.props.history);
+        this.props.loginUser({ username, password }, this.props.history);
     }
 
     render() {
@@ -36,15 +36,15 @@ class Signup extends Component {
                     </div>
                     <Input
                         placeholder="exemple@gmail.com"
-                        onChange={this.onEmailChange.bind(this)}
-                        value={this.props.firstname}
+                        onChange={this.onUsernameChange.bind(this)}
+                        value={this.props.username}
                         className="textField"
                     /><br/>
                     <Input
                         placeholder="********"
                         type="password"
                         onChange={this.onPasswordChange.bind(this)}
-                        value={this.props.firstname}
+                        value={this.props.password}
                         className="textField"
                     /><br/>
                     <Button className="buttonn" onClick={this.handleSubmit.bind(this)}>
@@ -57,12 +57,12 @@ class Signup extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-    const { email, password } = auth;
-    return { email, password };
+    const { username, password } = auth;
+    return { username, password };
 };
 
 export default connect(mapStateToProps, {
-    emailChanged,
+    usernameChanged,
     passwordChanged,
     loginUser
-})(Signup);
+})(Signin);

@@ -12,7 +12,8 @@ import {
     CONFIRM_PASSWORD_CHANGED,
     REGISTER_USER,
     REGISTER_USER_SUCCESS,
-    REGISTER_USER_FAILED
+    REGISTER_USER_FAILED,
+    LOGOUT_USER
 } from './types';
 
 export const usernameChanged = (text) => {
@@ -57,11 +58,13 @@ export const confirmPasswordChanged = (text) => {
   };
 };
 
-export const loginUser = ({ email, password }, history) => {
+export const loginUser = ({ username, password }, history) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
+    console.log(username);
+    console.log(password);
 
-    axios.post('http://localhost:4242/login', { email: email, password: password })
+    axios.post('http://localhost:4242/login', { username: username, password: password })
     .then(response => {
       console.log(response.status);
       if (response.status === 200) {
@@ -73,6 +76,7 @@ export const loginUser = ({ email, password }, history) => {
     })
     .catch(error => {
       loginUserFail(dispatch);
+      console.log("error");
       console.log(error);
     });
   };
@@ -118,3 +122,12 @@ const registerUserSuccess = (dispatch, user) => {
 const registerUserFail = (dispatch) => {
   dispatch({ type: REGISTER_USER_FAILED });
 };
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    dispatch({ type: LOGOUT_USER });
+
+    localStorage.setItem('authed', false);
+    axios.get('http://localhost:4242/logout')
+  }
+}
