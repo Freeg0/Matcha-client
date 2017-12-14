@@ -37,8 +37,12 @@ body {
     width: 200px;
 }
 
+.buttonn {
+    width: 195px;    
+}
+
 .sign {
     margin: 20%;
-    border-radius: 70px;
+    /* border-radius: 70px; */
     background-color: rgba(255, 255, 255, 0.5);;
 }

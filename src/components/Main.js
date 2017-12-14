@@ -1,17 +1,39 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Signup from './Signup';
 import Signin from './Signin';
+import Home from './Home';
 
-const Main = () => {
+function PrivateRoute ({component: Component, authed, ...rest}) {
+    authed = localStorage.getItem('authed');
+    console.log(authed);
     return (
-        <main>
-            <Switch>
-                <Route exact path='/' component={Signup}/>
-                <Route path='/Signin' component={Signin}/>
-            </Switch>
-        </main>
+      <Route
+        {...rest}
+        render={(props) => authed
+          ? <Component {...props} />
+          : <Redirect to={{pathname: '/Signin', state: {from: props.location}}} />}
+      />
     )
+  }
+
+class Main extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { authed: false };
+    }
+
+    render() {
+        return (
+            <main>
+                <Switch>
+                    <Route path='/Signup' component={Signup}/>
+                    <Route path='/Signin' component={Signin}/>
+                    <PrivateRoute authed={this.state.authed} path='/' component={Home}/>
+                </Switch>
+            </main>
+        )
+    }
 }
 
 export default Main;
