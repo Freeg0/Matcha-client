@@ -5,7 +5,7 @@ import '../app.css';
 const Home = () => {
     return (
         <div>
-            <h1>{this.props.user.username}</h1>
+
         </div>
     );
 }
