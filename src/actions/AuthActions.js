@@ -64,6 +64,7 @@ export const loginUser = ({ username, password }, history) => {
     console.log(username);
     console.log(password);
 
+    this.forceUpdate;
     axios.post('http://localhost:4242/login', { username: username, password: password })
     .then(response => {
       console.log(response.status);
@@ -72,6 +73,7 @@ export const loginUser = ({ username, password }, history) => {
         console.log('success');
         localStorage.setItem('authed', true);
         history.push('/Home');
+        window.location.reload();        
       }
     })
     .catch(error => {
@@ -127,7 +129,8 @@ export const logoutUser = () => {
   return (dispatch) => {
     dispatch({ type: LOGOUT_USER });
 
-    localStorage.setItem('authed', false);
+    // localStorage.setItem('authed', false);
+    localStorage.clear();
     axios.get('http://localhost:4242/logout')
   }
 }
