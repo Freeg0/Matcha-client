@@ -1,23 +1,29 @@
+.ui.floating.label {
+    position: absolute;
+    z-index: 100;
+    top: -0.4%;
+    left: 100%;
+    margin: 0em 0em 0em -1em !important;
+}
+
 body {
     padding: 0;
     margin: 0;
-    background-color: #DF8993;
     font-family: 'avenir';
     font-size: 16px;
     height: 100%;
-    background: no-repeat center fixed url('./soundsystem.jpg');
-    -webkit-background-size: cover;
-    background-size: cover;
+}
+
+.buttonSign {
+    margin-top: 10px;
+}
+
+.backGround {
+    background-image: url("background.jpg");
 }
 
 .ui.menu {
     border-radius: 0px;
-}
-
-.header {
-    width: 100%;
-    height: 100px;
-    background-color: #CB3B4B;
 }
 
 .textNavBar {
@@ -25,6 +31,42 @@ body {
     margin-top: 25px;
     font-size: 30px;
     color: white;
+}
+
+.profileCard {
+    position: absolute; 
+    left: 50%;
+    transform: translate(-50%); 
+    margin-bottom: 3%;
+}
+
+.searchButton {
+    position: absolute; 
+    left: 50%;
+    transform: translate(-50%); 
+    margin-bottom: 5%;
+}
+
+.searchResult {
+    width: 95%;
+    margin-left: 50%;
+}
+
+.searchResultDiv {
+    margin-left: 50%;
+    transform: translate(-50%); 
+}
+
+.searchProfileCard {
+    position: absolute; 
+    left: 50%;
+    transform: translate(-50%); 
+    margin-bottom: 3%;
+}
+
+.ui.card:last-child {
+    margin-bottom: 0em;
+    width: 420px;
 }
 
 .buttonNavBar {
@@ -35,14 +77,42 @@ body {
 
 .textField {
     width: 200px;
+    margin-top: 2%;
 }
 
-.buttonn {
-    width: 195px;    
+.profile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #73AD21;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.profile-name {
+    position: relative;
+    left: 30px;
+}
+
+.profile-avatar {
+    float: left;
+    position: relative;
+    width: 10%;
+    height: 10%;
+    margin-left: 3%;
+    margin-top: 3%;
+    border: 3px solid #73AD21;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.profile-line-1 {
+    display: inline;
+}
+
+.profile-text-1 {
+    float: left;
 }
 
 .sign {
     margin: 20%;
     /* border-radius: 70px; */
-    background-color: rgba(255, 255, 255, 0.5);;
 }
