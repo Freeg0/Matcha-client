@@ -140,3 +140,7 @@ body {
     margin: 20%;
     /* border-radius: 70px; */
 }
+
+.iconSettings {
+    align-items: right;
+}

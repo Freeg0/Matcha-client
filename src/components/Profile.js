@@ -8,13 +8,14 @@ const userdata = reactLocalStorage.getObject('user');
 console.log('userdata : ', userdata);
 const extra = (
   <a>
-    <Icon name='user' />
-    16 Matchs <br/>
+    <Icon className="iconSettings" name='trophy' />
+    <Icon name='trophy' />
+    Pop Score : {userdata.popscore}<br/>
     Name : {userdata.nom} <br/>
     Surname : {userdata.prenom} <br/>
     Sex : {userdata.sex} <br/>
     Orientation : {userdata.orient} <br/>
-    </a>
+  </a>
 );
 
 const Profile = () => (
