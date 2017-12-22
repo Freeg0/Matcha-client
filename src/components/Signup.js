@@ -49,7 +49,7 @@ class Signup extends Component {
 
     render() {
         return (
-            <div className="ui one column stackable center aligned page grid">
+            <div className="ui one column stackable center aligned page grid backGround">
                 <div className="column twelve wide sign">
                     <div>
                         <span style={{fontSize: 30}}>S'inscrire</span><br/>
@@ -92,9 +92,11 @@ class Signup extends Component {
                         value={this.props.confirmPassword}
                         className="textField"
                     /><br/>
-                    <Button className="buttonn" onClick={this.handleSubmit.bind(this)}>
-                        S'inscrire
-                    </Button>
+                    <div className="buttonSign">
+                        <Button className="buttonn" onClick={this.handleSubmit.bind(this)}>
+                            S'inscrire
+                        </Button>
+                    </div>
                 </div>
             </div>
         );

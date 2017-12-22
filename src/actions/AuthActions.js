@@ -14,7 +14,7 @@ import {
     REGISTER_USER_SUCCESS,
     REGISTER_USER_FAILED,
     LOGOUT_USER
-} from './types';
+   } from './types';
 
 export const usernameChanged = (text) => {
     return {

@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../app.css';
+import { combineReducers, createStore } from 'redux';
 import { Input, Button } from 'semantic-ui-react';
 import {
     usernameChanged,
     passwordChanged,
     loginUser
 } from '../actions';
+import { sessionService, sessionReducer } from 'redux-react-session';
+
+
+// Add the sessionReducer
+const reducer = combineReducers({
+    session: sessionReducer
+});
+  
+  const store = createStore(reducer);
+  
+  // Init the session service
+  sessionService.initSessionService(store, { driver: 'COOKIES' });
+  
 
 class Signin extends Component {
     constructor(props) {
@@ -29,10 +43,10 @@ class Signin extends Component {
 
     render() {
         return (
-            <div className="ui one column stackable center aligned page grid">
+            <div className="ui one column stackable center aligned page grid backGround">
                 <div className="column twelve wide sign">
                     <div>
-                        <span style={{fontSize: 30, Margin: 10}}>Se connecter</span><br/>
+                        <span style={{fontSize: 30}}>Se connecter</span><br/>
                     </div>
                     <Input
                         placeholder="exemple@gmail.com"
@@ -47,9 +61,18 @@ class Signin extends Component {
                         value={this.props.password}
                         className="textField"
                     /><br/>
-                    <Button className="buttonn" onClick={this.handleSubmit.bind(this)}>
-                        Se connecter
-                    </Button>
+                    <div className="buttonSign">
+                        <Button onClick={this.handleSubmit.bind(this)}>
+                            Se connecter
+                        </Button>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
                 </div>
             </div>
         );

@@ -12,6 +12,7 @@ const Home = () => {
 
 const mapStateToProps = ({ auth }) => {
     const { user } = auth;
+    console.log('user', user);
     return { user };
 };
 

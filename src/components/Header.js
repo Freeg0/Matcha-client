@@ -30,23 +30,19 @@ const Header = () => (
     localStorage.getItem('authed') ? (
         <Menu>
             <Menu.Item as={Link} to='/'><span>Matcha</span></Menu.Item>
-            <Menu.Item position='right' as='a'>
+            <Menu.Item as='a'>
                 <Icon name='mail' /> Messages
                 <Label color='red' floating>22</Label>
             </Menu.Item>
-            <Menu.Item position='right' as='a'>
+            <Menu.Item as='a'>
                 <Icon name='users' /> Friends
                 <Label color='teal' floating>22</Label>
             </Menu.Item>
-            <Menu.Item position='right' as='a'>
+            <Menu.Item as='a'>
                 <Icon name='alarm' /> Notifs
                 <Label circular size='mini' color='blue' floating>2</Label>
             </Menu.Item>
-            <Menu.Menu position='right'>
-                Bonjour, 
-            </Menu.Menu>
-
-            <Dropdown trigger={trigger} options={options} />
+            <Dropdown className='headerDrop' trigger={trigger} options={options} />
         </Menu>
     ) : (
         <Menu>

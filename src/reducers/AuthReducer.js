@@ -13,6 +13,7 @@ import {
     REGISTER_USER,
     LOGOUT_USER
 } from '../actions/types';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
 const INITIAL_STATE = {
     username: '',
@@ -27,8 +28,7 @@ const INITIAL_STATE = {
     success: ''
 };
   
-  export default (state = INITIAL_STATE, action) => {
-    console.log(state);
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case USERNAME_CHANGED:
             return { ...state, username: action.payload };
@@ -45,6 +45,7 @@ const INITIAL_STATE = {
         case LOGIN_USER:
             return { ...state, loading: true, error: '' };
         case LOGIN_USER_SUCCESS:
+        reactLocalStorage.setObject('user', action.payload.userdata);
             return { ...state, ...INITIAL_STATE, user: action.payload };
         case LOGIN_USER_FAIL:
             return { ...state, error: 'Authentication Failed.', password: '', loading: false };

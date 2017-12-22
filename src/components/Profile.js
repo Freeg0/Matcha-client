@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
-import { Card, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { Card, Icon } from 'semantic-ui-react';
+import {  REGISTER_USER_SUCCESS } from '../actions/types';
+import {reactLocalStorage} from 'reactjs-localstorage';
 
-const userInfos = localStorage.getItem('userinfos');
-console.log(userInfos);
+const userdata = reactLocalStorage.getObject('user');
+console.log('userdata : ', userdata);
 const extra = (
   <a>
     <Icon name='user' />
-    16 Friends <br/>
-  Username : xxxx <br/>
-  Name : xxxx <br/>
-  Surname : xxxx <br/>
-  Sex : xxx <br/>
-  Orientation : xxx <br/>
-
+    16 Matchs <br/>
+    Name : {userdata.nom} <br/>
+    Surname : {userdata.prenom} <br/>
+    Sex : {userdata.sex} <br/>
+    Orientation : {userdata.orient} <br/>
     </a>
-
-)
-
+);
 
 const Profile = () => (
-  <Card className='profileCard'
-    image='https://react.semantic-ui.com/assets/images/avatar/large/elliot.jpg'
-    header='Elliot Baker'
-    meta='Your Profile'
-    description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
-    extra={extra}
-  />
-)
+  <div>
+    <Card className='profileCard'
+      image='https://react.semantic-ui.com/assets/images/avatar/large/elliot.jpg'
+      header={userdata.username}
+      meta='Your Profile'
+      description= {"Votre description : " + userdata.descripion}
+      extra={extra}
+    />
+    <br/>
+  </div>
+);
 
-export default Profile;
+const mapStateToProps = ({ auth }) => {
+  const { user } = auth;
+  console.log('user', user);
+  return { user };
+};
+
+export default connect(mapStateToProps, {}) (Profile);
